@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>URBNSTEP</title>
+    <!-- 連結 Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <style>
+        /* 引入字型 */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap');
+
+        :root {
+            /* 主要顏色 */
+            --clr-primary: #212529;
+            /* 深色文字、按鈕等 */
+            --clr-secondary: #6c757d;
+            /* 次要文字，如圖標文字和頁腳文字 */
+            --clr-body-bg: #f8f9fa;
+            /* 淺色背景 */
+            --clr-white: #ffffff;
+            /* 白色 */
+
+            /* 產品和狀態顏色 */
+            --clr-sale-price: #57A203;
+            /* 促銷價格 */
+            --clr-disabled: #adb5bd;
+            /* 已售罄或無效連結 */
+            --clr-danger: #dc3545;
+            --clr-DOM: #6C757D;
+            /* 警告或提示文字 */
+            --clr-border: #dee2e6;
+            /* 邊框 */
+
+            /* 特殊區塊顏色 */
+            --clr-ad-bg: #e8fec5;
+            /* 廣告區塊背景 */
+        }
+
+        body {
+            font-family: "Noto Sans TC", sans-serif;
+            line-height: 1.5;
+            letter-spacing: 0.05em;
+            color: var(--clr-primary);
+            background-color: var(--clr-body-bg);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .aside-bg {
+            background-color: #e8fec5;
+        }
+
+        .text-style-1 {
+            color: var(--clr-primary);
+            padding: 8px 5px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .text-style-2 {
+            color: var(--clr-primary);
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .pcd-htt {
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        .price-tt {
+            color: var(--clr-sale-price);
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .span-tt {
+            font-weight: 400;
+            font-size: 14px;
+            text-decoration: line-through;
+            color: var(--clr-disabled);
+        }
+
+        .cdp-tt {
+            color: var(--clr-DOM);
+            font-weight: 400;
+            font-size: 16px;
+        }
+
+        .w-20 {
+            width: 20% !important
+        }
+
+        .wh-64 {
+            width: 64px;
+        }
+
+        .icon-tt {
+            font-weight: 500;
+            font-size: 16px;
+            color: var(--clr-secondary);
+        }
+
+        .Fh-tt {
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        .size-con .size-wh a {
+            border-color: var(--clr-border);
+            color: var(--clr-primary);
+            font-weight: 500;
+        }
+
+        .size-con .size-wh a:hover {
+            border-color: var(--clr-primary);
+            color: var(--clr-primary);
+        }
+
+        .size-con .size-wh a.disabled {
+            color: var(--clr-disabled);
+            border-color: var(--clr-border);
+            pointer-events: none;
+        }
+
+        .size-ptt {
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--clr-danger);
+        }
+
+        .b1 {
+            color: var(--clr-primary);
+            background-color: var(--clr-white);
+            border-color: var(--clr-primary);
+        }
+
+        .b1:hover {
+            color: var(--clr-white);
+            background-color: var(--clr-primary);
+        }
+
+        .b2 {
+            color: var(--clr-white);
+            background-color: var(--clr-primary);
+            border-color: var(--clr-primary);
+        }
+
+        .b2:hover {
+            color: var(--clr-primary);
+            background-color: var(--clr-white);
+        }
+
+
+
+
+        .Ad-units {
+            background-color: var(--clr-ad-bg);
+            border: 1px solid var(--clr-ad-bg);
+            padding: 2rem;
+            border-radius: 0.5rem;
+        }
+
+        .Ad-text p {
+            font-size: 24px;
+            /* 新增的樣式 */
+            font-weight: 700;
+        }
+
+        .Ad-text a {
+            font-size: 16px;
+        }
+
+        .footer-tt {
+            font-size: 14px;
+            color: var(--clr-secondary);
+        }
+
+        @media (max-width: 767.98px) {
+            .wrap {
+                max-width: 100%;
+                padding-right: 1rem;
+                padding-left: 1rem;
+            }
+
+            .text-style-1 {
+                font-size: 18px;
+            }
+
+            .text-style-2 {
+                font-size: 14px;
+            }
+
+            .pcd-htt {
+                font-size: 24px;
+            }
+
+            .price-tt {
+                font-size: 18px;
+            }
+
+            .span-tt {
+                font-size: 12px;
+            }
+
+            .cdp-tt {
+                font-size: 14px;
+            }
+
+            .wh-64 {
+                width: 48px;
+            }
+
+            .icon-tt {
+                font-size: 14px;
+            }
+
+            .Fh-tt {
+                font-size: 14px;
+            }
+
+            .size-con .size-wh a {
+                font-size: 12px;
+                padding: 8px;
+            }
+
+            .b1,
+            .b2 {
+                font-size: 14px;
+                padding: 10px;
+            }
+
+            .Ad-units {
+                padding: 1.5rem 1rem;
+            }
+
+            .Ad-text p {
+                font-size: 18px;
+            }
+
+            .Ad-text a {
+                font-size: 14px;
+            }
+
+
+        }
+
+        @media (max-width: 576px) {
+            article .b1 {
+                width: 30% !important;
+            }
+
+            article .b2 {
+                width: 70% !important;
+            }
+
+
+            article .b2 i,
+            article .b2 svg {
+                color: #ffffff !important;
+            }
+
+            article .b2 i,
+            article .b2 svg :hover {
+                color: #000000 !important;
+            }
+
+            .display-3 {
+                font-size: 2.5rem;
+            }
+
+            .display-5 {
+                font-size: 2rem;
+            }
+
+            /* section */
+            /* aside */
+            .aside-bg h2 {
+                font-size: 20px;
+
+                margin-bottom: 1rem;
+                margin-right: 0 !important;
+            }
+
+            .aside-bg a {
+                padding: 10px 5px !important;
+                margin-left: 10px !important;
+            }
+
+            /* footer */
+            footer .nav {
+                flex-direction: column;
+            }
+
+            footer .text-center,
+            footer .nav-item {
+                text-align: left !important
+            }
+
+            footer .fs-4 {
+                margin-left: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap container-fluid px-md-5">
+        <div class="container-lg my-0 mx-auto">
+            <header class="py-3 mb-5">
+                <nav class="d-flex justify-content-between align-items-center">
+                    <ul class="nav d-flex align-items-center mb-0">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark text-style-1 p-2" href="#">URBNSTEP</a>
+                        </li>
+                        <li class="nav-item ms-4 d-none d-md-block">
+                            <a class="nav-link text-dark text-style-2 p-2" href="#">商品列表</a>
+                        </li>
+                        <li class="nav-item ms-4 d-none d-md-block">
+                            <a class="nav-link text-dark text-style-2 p-2" href="#">品牌故事</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <a class="nav-link text-dark p-2" href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+                                class="bi bi-person d-block" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
+                            </svg>
+                        </a>
+                    </div>
+                </nav>
+            </header>
+
+            <main class="container-fluid my-0 mx-auto mb-5">
+                <div class="row g-4 justify-content-center d-flex align-items-stretch">
+                    <section class="col-12 col-md-6 mb-4 d-flex">
+                        <div class="row row-cols-2 g-2 flex-grow-1 img-gallery d-none d-md-flex">
+                            <div class="col d-flex">
+                                <img class="img-fluid rounded"
+                                    src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/refs/heads/main/2025-week2/image.png"
+                                    alt="鞋子圖片">
+                            </div>
+                            <div class="col d-flex">
+                                <img class="img-fluid rounded"
+                                    src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/refs/heads/main/2025-week2/image-1.png"
+                                    alt="鞋子圖片">
+                            </div>
+                            <div class="col d-flex">
+                                <img class="img-fluid rounded"
+                                    src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/refs/heads/main/2025-week2/image-2.png"
+                                    alt="鞋子圖片">
+                            </div>
+                            <div class="col d-flex">
+                                <img class="img-fluid rounded"
+                                    src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/refs/heads/main/2025-week2/image-3.png"
+                                    alt="鞋子圖片">
+                            </div>
+                            <div class="col d-flex">
+                                <img class="img-fluid rounded"
+                                    src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/refs/heads/main/2025-week2/image-4.png"
+                                    alt="鞋子圖片">
+                            </div>
+                            <div class="col d-flex">
+                                <img class="img-fluid rounded"
+                                    src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/refs/heads/main/2025-week2/image-5.png"
+                                    alt="鞋子圖片">
+                            </div>
+                            <div class="col d-flex">
+                                <img class="img-fluid rounded"
+                                    src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/refs/heads/main/2025-week2/image-6.png"
+                                    alt="鞋子圖片">
+                            </div>
+                            <div class="col d-flex">
+                                <img class="img-fluid rounded"
+                                    src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/refs/heads/main/2025-week2/image-7.png"
+                                    alt="鞋子圖片">
+                            </div>
+                        </div>
+                        <div id="productCarousel" class="carousel slide d-block d-md-none" data-bs-ride="carousel">
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="0"
+                                    class="active" aria-current="true" aria-label="Slide 1"></button>
+                                <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="1"
+                                    aria-label="Slide 2"></button>
+                                <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="2"
+                                    aria-label="Slide 3"></button>
+                                <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="3"
+                                    aria-label="Slide 4"></button>
+                                <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="4"
+                                    aria-label="Slide 5"></button>
+                                <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="5"
+                                    aria-label="Slide 6"></button>
+                                <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="6"
+                                    aria-label="Slide 7"></button>
+                                <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="7"
+                                    aria-label="Slide 8"></button>
+                            </div>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/refs/heads/main/2025-week2/image.png"
+                                        class="d-block w-100" alt="鞋子圖片">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/refs/heads/main/2025-week2/image-1.png"
+                                        class="d-block w-100" alt="鞋子圖片">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/refs/heads/main/2025-week2/image-2.png"
+                                        class="d-block w-100" alt="鞋子圖片">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/refs/heads/main/2025-week2/image-3.png"
+                                        class="d-block w-100" alt="鞋子圖片">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/refs/heads/main/2025-week2/image-4.png"
+                                        class="d-block w-100" alt="鞋子圖片">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/refs/heads/main/2025-week2/image-5.png"
+                                        class="d-block w-100" alt="鞋子圖片">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/refs/heads/main/2025-week2/image-6.png"
+                                        class="d-block w-100" alt="鞋子圖片">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/refs/heads/main/2025-week2/image-7.png"
+                                        class="d-block w-100" alt="鞋子圖片">
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel"
+                                data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#productCarousel"
+                                data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </section> <!--章節/主題 網頁區塊-->
+                    <article class="col-12 col-md-6 mb-4">
+                        <ul class="nav d-flex align-items-center mb-3">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark text-decoration-none p-0" href="#">首頁</a>
+                            </li>
+                            <li class="nav-item mx-1 text-muted">/</li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark text-decoration-none p-0" href="#">女鞋</a>
+                            </li>
+                            <li class="nav-item mx-1 text-muted">/</li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark text-decoration-none p-0" href="#">滑板鞋</a>
+                            </li>
+                            <li class="nav-item mx-1 text-muted">/</li>
+                            <li class="nav-item fw-bold text-dark p-0">Platform 404</li>
+                        </ul>
+                        <div class="Product-Card">
+                            <h2 class="fs-3 fw-bold mb-3 pcd-htt">Platform 404</h2>
+                            <div class="d-flex align-items-center mb-3">
+                                <p class="fs-4 mb-0 fw-bold price-tt">NT$2,600<span
+                                        class="fs-5 text-secondary text-decoration-line-through ms-2 span-tt">NT$3,200</span>
+                                </p>
+                            </div>
+
+                            <p class="mb-3 cdp-tt">
+                                Platform 404 以柔和奶白為底，搭配深藍色皮革點綴，走在街上自帶回頭率。鞋型採用復古運動風輪廓，結合輕量厚底與柔軟泡棉鞋舌，兼顧美感與舒適。
+                            </p>
+
+                            <p class="mb-5 cdp-tt">
+                                鞋身選用柔軟皮革材質，打造出清新卻不失個性的氛圍，並以鞋面透氣孔設計提升穿著體驗，兼顧質感與舒適度，適合日常長時間著用。無論是街頭穿搭、日常通勤或週末出遊都能輕鬆駕馭。</p>
+                            <form class="Product-Form" action="#">
+                                <h5 class="fs-5 fw-bold mb-2 Fh-tt">顏色</h5>
+                                <div class="mb-5">
+                                    <ul class="d-flex list-unstyled gap-2">
+                                        <li class="d-block">
+                                            <a class="btn p-2 rounded border size-con size-wh" href="#">
+                                                <img class="d-block mb-1 wh-64"
+                                                    src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/refs/heads/main/2025-week2/image.png"
+                                                    alt="">
+                                                <p class="d-block text-dark mb-0 icon-tt">藍色</p>
+                                            </a>
+                                        </li>
+                                        <li class="d-block">
+                                            <a class="btn p-2 rounded border size-con size-wh" href="#">
+                                                <img class="d-block mb-1 wh-64"
+                                                    src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/refs/heads/main/2025-week2/product-7.png"
+                                                    alt="">
+                                                <p class="d-block text-dark mb-0 icon-tt">卡其色</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <h5 class="fs-5 fw-bold mb-2 Fh-tt">尺寸</h5>
+                                <!-- 使用 row 和 col-4 類別來建立三欄式佈局，並保留 gap-2 類別設定間距 -->
+                                <div class="d-flex flex-wrap gap-2 mb-5 size-con">
+                                    <div class="row g-2 w-100">
+
+                                        <div class="col-4">
+                                            <a class="btn btn-outline-dark w-100 size-wh" href="#">
+                                                35(22.5cm)
+                                            </a>
+                                        </div>
+                                        <div class="col-4">
+                                            <a class="btn btn-outline-dark w-100 size-wh" href="#">
+                                                36(23.0cm)
+                                            </a>
+                                        </div>
+                                        <div class="col-4">
+                                            <a class="btn btn-outline-dark w-100 size-wh" href="#">
+                                                37(23.5cm)
+                                            </a>
+                                        </div>
+                                        <div class="col-4">
+                                            <a class="btn btn-outline-dark w-100 size-wh" href="#">
+                                                38(24.0cm)
+                                            </a>
+                                        </div>
+                                        <div class="col-4">
+                                            <a class="btn btn-outline-dark w-100 size-wh" href="#">
+                                                39(24.5cm)
+                                            </a>
+                                        </div>
+                                        <div class="col-4">
+                                            <a class="btn btn-outline-dark w-100 size-wh" href="#">
+                                                40(25.0cm)
+                                            </a>
+                                        </div>
+                                        <div class="col-4">
+                                            <a class="btn btn-outline-dark w-100 size-wh" href="#">
+                                                41(26.0cm)
+                                            </a>
+                                        </div>
+                                        <div class="col-4">
+                                            <!-- 停用按鈕保持三欄排版 -->
+                                            <a class="btn btn-outline-dark w-100 disabled size-wh" href="#">
+                                                42(26.5cm)
+                                            </a>
+                                        </div>
+                                        <div class="col-4">
+                                            <!-- 停用按鈕保持三欄排版 -->
+                                            <a class="btn btn-outline-dark w-100 disabled size-wh" href="#">
+                                                43(27.0cm)
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <p class="text-danger w-100 fs-6 mt-2 size-ptt">僅剩 3 雙</p>
+                                </div>
+                                <div class="d-flex gap-2 mb-5 flex-sm-row-reverse">
+                                    <button type="submit" class="btn btn-outline-dark w-50 b1">
+                                        <i class="bi bi-heart d-inline d-sm-none"></i>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-heart me-2 d-none d-sm-inline"
+                                            viewBox="0 0 16 16">
+                                            <path
+                                                d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
+                                        </svg>
+                                        <span class="d-none d-sm-inline">加入收藏</span>
+                                    </button>
+                                    <button type="submit" class="btn btn-dark w-50 b2">
+                                        <i class="bi bi-bag me-2 d-inline d-sm-none"></i>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-bag mx-1 d-none d-sm-inline"
+                                            viewBox="0 0 16 16">
+                                            <path
+                                                d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z" />
+                                        </svg>門市預約試穿
+                                    </button>
+                                </div>
+                            </form>
+                            <div class="illustrate">
+                                <ul class="list-unstyled mb-4">
+                                    <h5 class="fs-5 fw-bold mb-2 Fh-tt">商品材質</h5>
+                                    <li class="cdp-tt">鞋面：合成皮革（Synthetic Leather）</li>
+                                    <li class="cdp-tt">內裡：透氣網布材質，提升舒適與排汗性</li>
+                                    <li class="cdp-tt">鞋底：EVA 輕量發泡橡膠，具備良好緩震與止滑效果</li>
+                                    <li class="cdp-tt">鞋帶：聚酯纖維，耐拉扯不易鬆脫</li>
+                                </ul>
+                                <div class="mb-4">
+                                    <h5 class="fs-5 fw-bold mb-2 Fh-tt">購買須知</h5>
+                                    <p class="cdp-tt">
+                                        商品顏色因螢幕顯示可能略有差異，請以實品為準。
+                                        建議首次穿著前試穿確認尺寸，避免影響退換貨權益。
+                                        本商品為限量發售，庫存有限，如需更換尺寸請儘早聯繫客服協助處理。
+                                    </p>
+                                </div>
+
+                                <div class="mb-4">
+                                    <h5 class="fs-5 fw-bold mb-2 Fh-tt">保養方式</h5>
+                                    <p class="cdp-tt">
+                                        建議以乾布或微濕軟布擦拭表面汙漬，避免機洗或長時間浸水。
+                                        收納時請放置於乾燥通風處，避免日曬及高溫導致變形或龜裂。
+                                        若需深層清潔，建議使用中性清潔劑並搭配柔刷輕刷，勿使用漂白水或強酸強鹼清潔劑。
+                                    </p>
+                                </div>
+
+                            </div><!-- 部落格文章  產品卡片 互動式小工具-->
+                    </article>
+                </div>
+            </main>
+
+            <aside class="container-fluid mb-5">
+                <div id="carouselExampleIndicators" class="carousel slide d-block d-sm-none" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                            class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                            aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+                            aria-label="Slide 4"></button>
+                    </div>
+                    <div class="carousel-inner mt-5">
+                        <div class="carousel-item active">
+                            <a class="d-block text-decoration-none text-dark" href="#">
+                                <img class="d-block w-100"
+                                    src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/refs/heads/main/2025-week2/product-2.png"
+                                    alt="VM001">
+                                <h4 class="fs-5 mb-1 pcd-htt text-center">VM001</h4>
+                                <p class="text-secondary mb-0 price-tt text-center">NT$2,600</p>
+                            </a>
+                        </div>
+                        <div class="carousel-item">
+                            <a class="d-block text-decoration-none text-dark" href="#">
+                                <img class="d-block w-100"
+                                    src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/refs/heads/main/2025-week2/product-3.png"
+                                    alt="Melty Kiss">
+                                <h4 class="fs-5 mb-1 pcd-htt text-center">Melty Kiss</h4>
+                                <p class="text-secondary mb-0 price-tt text-center">NT$4,000</p>
+                            </a>
+                        </div>
+                        <div class="carousel-item">
+                            <a class="d-block text-decoration-none text-dark" href="#">
+                                <img class="d-block w-100"
+                                    src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/refs/heads/main/2025-week2/product-4.png"
+                                    alt="BOOMBLOK">
+                                <h4 class="fs-5 mb-1 pcd-htt text-center">BOOMBLOK</h4>
+                                <p class="text-secondary mb-0 price-tt text-center">NT$3,200</p>
+                            </a>
+                        </div>
+                        <div class="carousel-item">
+                            <a class="d-block text-decoration-none text-dark" href="#">
+                                <img class="d-block w-100"
+                                    src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/refs/heads/main/2025-week2/product-7.png"
+                                    alt="Sugar Snap">
+                                <h4 class="fs-5 mb-1 pcd-htt text-center">Sugar Snap</h4>
+                                <p class="text-secondary mb-0 price-tt text-center">NT$3,200</p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="d-flex gap-2 mb-5 flex-sm-row-reverse">
+                        <button type="submit" class="btn btn-outline-dark w-50 b1">
+                            <i class="bi bi-heart d-inline d-sm-none"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill=""
+                                class="bi bi-heart me-2 d-none d-sm-inline" viewBox="0 0 16 16">
+                                <path
+                                    d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
+                            </svg>
+                            <span class="d-none d-sm-inline">加入收藏</span>
+                        </button>
+                        <button type="submit" class="btn btn-dark w-50 b2">
+                            <i class="bi bi-bag me-2 d-inline d-sm-none"></i>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill=""
+                                class="bi bi-bag mx-1 d-none d-sm-inline" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z" />
+                            </svg>門市預約試穿
+                        </button>
+                    </div>
+                </div>
+                <!-- 桌面版橫向四欄 -->
+                <ul class="d-none d-sm-flex flex-wrap justify-content-center list-unstyled w-100 gap-5">
+                    <li class="d-block w-20">
+                        <a class="d-block text-decoration-none text-dark" href="#">
+                            <img class="img-fluid mb-2"
+                                src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/refs/heads/main/2025-week2/product-2.png"
+                                alt="">
+                            <h4 class="fs-5 mb-1 pcd-htt">VM001</h4>
+                            <p class="text-secondary mb-0 price-tt">NT$2,600</p>
+                        </a>
+                    </li>
+                    <li class="d-block w-20">
+                        <a class="d-block text-decoration-none text-dark" href="#">
+                            <img class="img-fluid mb-2"
+                                src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/refs/heads/main/2025-week2/product-3.png"
+                                alt="">
+                            <h4 class="fs-5 mb-1 pcd-htt">Melty Kiss</h4>
+                            <p class="text-secondary mb-0 price-tt">NT$4,000 </p>
+                        </a>
+                    </li>
+                    <li class="d-block w-20">
+                        <a class="d-block text-decoration-none text-dark" href="#">
+                            <img class="img-fluid mb-2"
+                                src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/refs/heads/main/2025-week2/product-4.png"
+                                alt="">
+                            <h4 class="fs-5 mb-1 pcd-htt">BOOMBLOK</h4>
+                            <p class="text-secondary mb-0 price-tt">NT$3,200</p>
+                        </a>
+                    </li>
+                    <li class="d-block w-20">
+                        <a class="d-block text-decoration-none text-dark" href="#">
+                            <img class="img-fluid mb-2"
+                                src="https://raw.githubusercontent.com/hexschool/2022-web-layout-training/refs/heads/main/2025-week2/product-7.png"
+                                alt="">
+                            <h4 class="fs-5 mb-1 pcd-htt">Sugar Snap</h4>
+                            <p class="text-secondary mb-0 price-tt">NT$3,200</p>
+                        </a>
+                    </li>
+                </ul>
+        </div>
+        </aside><!-- 側邊欄 , 引文區塊 廣告單元 導覽連結-->
+    </div>
+    </div>
+    <aside class="aside-bg text-center py-5 mb-5">
+        <div class="container d-flex justify-content-center align-items-center">
+            <h2 class="display-5 fw-bold  d-block me-5 mt-3">加入會員取得 9 折優惠</h2>
+            <a href="#" class="btn btn-primary btn-lg bg-dark text-white  px-5 py-3">馬上註冊</a>
+        </div>
+    </aside>
+    </main>
+    <!-- Footer -->
+    <footer class="container text-center py-4">
+        <div class="row align-items-center justify-content-between mb-3">
+            <div class="col-12 col-md-auto text-center">
+                <a class="text-decoration-none text-dark fs-4 fw-bold" href="#">URBNSTEP</a>
+            </div>
+            <div class="col-12 col-md-auto text-center ">
+                <ul class="nav justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark fw-bold" href="#">商品列表</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark fw-bold" href="#">品牌故事</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <p class="text-muted">Copyright &copy; 2025 URBNSTYLE2025 <br>All Rights Reserved.</p>
+    </footer>
+</body>
+
+</html>
